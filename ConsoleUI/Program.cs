@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
-using DataAccess.Concrete;
+using DataAccess.Concrete.EntityFramework;
+using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 
@@ -9,15 +10,15 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
 
             Car car = new Car()
-         {
-                Id = 6,
-                BrandId = 2,
+            {
+                Id = 165,
+                BrandId = 65,
                 ColorId = 2,
                 DailyPrice = 200,
-                Description = "Prado a9586",
+                Description = "benz sdkfhb",
                 ModelYear = 2019
             };
 
@@ -27,7 +28,7 @@ namespace ConsoleUI
             }
 
             //add new car
-            carManager.Add(car);
+           // carManager.Add(car);
             Console.WriteLine("---------------------Added a new car");
 
 
@@ -37,9 +38,9 @@ namespace ConsoleUI
             }
 
             //delete a car - Prado a743
-            Car carToDelete = new Car() { Id = 3, BrandId = 2, ColorId = 2, DailyPrice = 1500, ModelYear = 2015, Description = "Prado a743" };
+            Car carToDelete = new Car() { Id = 19, BrandId = 2, ColorId = 2, DailyPrice = 1500, ModelYear = 2015, Description = "Prado a743" };
 
-            carManager.Delete(carToDelete);
+            carManager.Delete(car);
             Console.WriteLine("-----------------------Deleted : Prado a743");
 
             foreach (var item in carManager.GetAll())
@@ -61,10 +62,12 @@ namespace ConsoleUI
 
             //Get By Id 
 
-            Console.WriteLine("-----------------------Get by Id if exists in database");
-            Console.WriteLine(carManager.GetById(1).Description); 
+            //Console.WriteLine("-----------------------Get by Id if exists in database");
+            //Console.WriteLine(carManager.GetById(1).Description);
 
-           
+            //////
+
+
 
 
 

@@ -15,8 +15,16 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
+
         public void Add(Car car)
         {
+            if (car.Description.Length <= 2 || car.DailyPrice <= 0)
+            {
+                Console.WriteLine("Invalid values");
+                return;
+            }
+               
+
             _carDal.Add(car);
         }
 
@@ -27,12 +35,27 @@ namespace Business.Concrete
 
         public List<Car> GetAll()
         {
-           return  _carDal.GetAll();
+           return _carDal.GetAll();
+        }
+
+        public List<Car> GetAllByBrandId(int id)
+        {
+            return _carDal.GetAll(c => c.BrandId == id);
+        }
+
+        public List<Car> GetAllByColorId(int id)
+        {
+            return _carDal.GetAll(c => c.ColorId == id);
+        }
+
+        public List<Car> GetAllByDailyPrice(decimal min, decimal max)
+        {
+            return _carDal.GetAll(c => c.DailyPrice <=max &&c.DailyPrice>=min);
         }
 
         public Car GetById(int id)
         {
-            return _carDal.GetById(id);
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)
