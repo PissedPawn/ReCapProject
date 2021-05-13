@@ -10,6 +10,81 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //CarManagerTest();
+            Console.WriteLine("-------------------------------------------------------------------");
+
+            CarManagerTest2(); // car manager test
+
+            Console.WriteLine("-------------------------------------------------------------------");
+
+
+            BrandManagerTest(); // brand manager test
+
+            Console.WriteLine("-------------------------------------------------------------------");
+
+            ColorManagerTest(); // color manager test
+
+
+            Console.WriteLine("-------------------------------------------------------------------");
+
+            CarDetailDtoTest(); // car detail dto test
+
+        }
+
+        private static void CarDetailDtoTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+
+
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarName + " / " + car.BrandName + " / " + car.ColorName + " / " + car.DailyPrice);
+            }
+        }
+
+        private static void ColorManagerTest()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            Color color2 = new Color() { Id = 1, Name = "White" };
+            Color color1 = new Color() { Id = 2, Name = "Black" };
+
+            // colorManager.Add(color2); added
+            // colorManager.Add(color1); added
+
+            foreach (var color in colorManager.GetAll())
+            {
+                Console.WriteLine(color.Name);
+            }
+        }
+
+        private static void BrandManagerTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+
+            Brand brand1 = new Brand() { Id = 1, Name = "Audi" };
+            Brand brand2 = new Brand() { Id = 2, Name = "Prado" };
+
+
+            // brandManager.Add(brand2); added
+
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.Name);
+            }
+        }
+
+        private static void CarManagerTest2()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+
+            foreach (var car in carManager.GetAll())
+            {
+                Console.WriteLine(car.Description);
+            }
+        }
+
+        private static void CarManagerTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
 
             Car car = new Car()
@@ -28,7 +103,7 @@ namespace ConsoleUI
             }
 
             //add new car
-           // carManager.Add(car);
+            // carManager.Add(car);
             Console.WriteLine("---------------------Added a new car");
 
 
@@ -66,12 +141,6 @@ namespace ConsoleUI
             //Console.WriteLine(carManager.GetById(1).Description);
 
             //////
-
-
-
-
-
-
         }
     }
 }
