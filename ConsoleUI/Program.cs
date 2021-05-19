@@ -36,7 +36,7 @@ namespace ConsoleUI
             CarManager carManager = new CarManager(new EfCarDal());
 
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(car.CarName + " / " + car.BrandName + " / " + car.ColorName + " / " + car.DailyPrice);
             }
@@ -51,7 +51,7 @@ namespace ConsoleUI
             // colorManager.Add(color2); added
             // colorManager.Add(color1); added
 
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.Name);
             }
@@ -67,7 +67,7 @@ namespace ConsoleUI
 
             // brandManager.Add(brand2); added
 
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.Name);
             }
@@ -77,7 +77,7 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.Description);
             }
@@ -97,7 +97,7 @@ namespace ConsoleUI
                 ModelYear = 2019
             };
 
-            foreach (var item in carManager.GetAll())
+            foreach (var item in carManager.GetAll().Data)
             {
                 Console.WriteLine(item.Description);
             }
@@ -107,7 +107,7 @@ namespace ConsoleUI
             Console.WriteLine("---------------------Added a new car");
 
 
-            foreach (var item in carManager.GetAll())
+            foreach (var item in carManager.GetAll().Data)
             {
                 Console.WriteLine(item.Description);
             }
@@ -118,7 +118,7 @@ namespace ConsoleUI
             carManager.Delete(car);
             Console.WriteLine("-----------------------Deleted : Prado a743");
 
-            foreach (var item in carManager.GetAll())
+            foreach (var item in carManager.GetAll().Data)
             {
                 Console.WriteLine(item.Description);
             }
@@ -130,7 +130,7 @@ namespace ConsoleUI
 
             Console.WriteLine("-----------------------Updated : Audi a763 to audi a876");
 
-            foreach (var item in carManager.GetAll())
+            foreach (var item in carManager.GetAll().Data)
             {
                 Console.WriteLine(item.Description);
             }
