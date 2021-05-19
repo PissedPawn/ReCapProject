@@ -10,7 +10,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            //CarManagerTest();
+            //CarManagerTest();///
             Console.WriteLine("-------------------------------------------------------------------");
 
             CarManagerTest2(); // car manager test
