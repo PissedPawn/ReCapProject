@@ -10,24 +10,65 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+
+            RentalTest();
             //CarManagerTest();///
             Console.WriteLine("-------------------------------------------------------------------");
 
-            CarManagerTest2(); // car manager test
+            // CarManagerTest2(); // car manager test
 
             Console.WriteLine("-------------------------------------------------------------------");
 
 
-            BrandManagerTest(); // brand manager test
+            //BrandManagerTest(); // brand manager test
 
             Console.WriteLine("-------------------------------------------------------------------");
 
-            ColorManagerTest(); // color manager test
+            //ColorManagerTest(); // color manager test
 
 
             Console.WriteLine("-------------------------------------------------------------------");
 
-            CarDetailDtoTest(); // car detail dto test
+            // CarDetailDtoTest(); // car detail dto test
+
+        }
+
+        private static void CustomersTest()
+        {
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            Customer customer = new Customer() { UserId = 1, CompanyName = "BNB Dynamics" };
+            Customer customer2 = new Customer() { UserId = 2, CompanyName = "Visual Illuisons " };
+            customerManager.Add(customer);
+            customerManager.Add(customer2);
+
+            foreach (var item in customerManager.GetAll().Data)
+            {
+                Console.WriteLine(item.CompanyName);
+            }
+        }
+
+        private static void RentalTest()
+        {
+
+
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+            Rental available = new Rental() {Id=1, CarId = 1, CustomerId = 1, RentDate = DateTime.Now, ReturnDate = new DateTime(2021, 9, 12) };
+            Rental notAvailable = new Rental() {Id=2, CarId = 6, CustomerId = 2, RentDate = DateTime.Now, ReturnDate= null};
+
+            rentalManager.Update(available);
+            rentalManager.Add(notAvailable);
+
+            foreach (var rental in rentalManager.GetAll().Data)
+            {
+                Console.WriteLine("Rented at {0} ",rental.RentDate);
+            }
+
+
+        }
+
+        private static void UserTest()
+        {
 
         }
 
